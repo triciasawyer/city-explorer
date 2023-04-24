@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-console.log(process.env.REACT_APP_KEY_LOCATION);
 
 class App extends React.Component {
   constructor(props) {
@@ -10,6 +9,8 @@ class App extends React.Component {
       cityData: {},
       error: false,
       errorMessage: '',
+      locationLat: '',
+      locationLon: '',
     };
   }
 
@@ -23,16 +24,21 @@ class App extends React.Component {
       let url = (`https://us1.locationiq.com/v1/search?key=${process.env.REACT_APP_KEY_LOCATION}&q=${this.state.city}&format=json`);
       console.log(url)
       let cityInfo = await axios.get(url);
+      console.log('cityInfo:', cityInfo.data[0]);
 
-      console.log('cityInfo:',cityInfo.data[0]);
+
+      let locationLat = cityInfo.data[0].lat;
+      let locationLon = cityInfo.data[0].lon;
 
       this.setState({
-        cityData: cityInfo.data.results[0],
+        cityName: cityInfo.data[0],
         error: false,
+        locationLat: locationLat,
+        locationLon: locationLon
       });
     }
     catch (error) {
-console.log('error', error);
+      console.log('error', error);
       this.setState({
         error: true,
         errorMessage: `an error occured: ${error.response.status}`,
@@ -51,7 +57,7 @@ console.log('error', error);
 
   render() {
 
-    let cityLocationInfo = this.state.city
+    console.log(this.state.city, this.state.locationLat, this.state.locationLon);
 
     return (
       <>
@@ -60,7 +66,7 @@ console.log('error', error);
         {this.state.error ? (
           <p>{this.state.errorMessage}</p>
         ) : (
-          <ul>{cityLocationInfo}</ul>
+          <ul>{ }</ul>
         )}
         <form onSubmit={this.handleSubmit}>
           <label>
@@ -73,7 +79,6 @@ console.log('error', error);
     );
   }
 }
-
 
 
 
