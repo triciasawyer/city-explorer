@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
-import { Button, Card, Form} from 'react-bootstrap';
+import './App.css';
+import { Button, Card, Form } from 'react-bootstrap';
 
 class App extends React.Component {
   constructor(props) {
@@ -47,7 +48,7 @@ class App extends React.Component {
       this.setState({
         error: true,
         locationMap: false,
-        errorMessage: `an error occured: ${error.response.status}`,
+        errorMessage: `Uh oh, an error occured! ${error.response.status}`,
       });
     }
   };
@@ -75,29 +76,30 @@ class App extends React.Component {
         ) : (
           <ul>{this.state.cityData}</ul>
         )}
-        <Form onSubmit={this.handleCitySubmit}>
-          <label>
-            Pick a City:
+        <Form className='form' onSubmit={this.handleCitySubmit}>
+          <label className='form-label'>
+            Search for location:
             <input type='text' onChange={this.handleCityInput} />
           </label>
           <Button type='submit'>Explore!</Button>
         </Form>
+
+
         <Card className="location-cards" id='location'>
-                <Card.Body>
-                  <Card.Title> Welcome to {this.state.city}!</Card.Title>
-                  <Card.Text>
-                    Latitude: {this.state.locationLat}<br></br>Longitude: {this.state.locationLon}
-                  </Card.Text>
-                  <Card.Img
-                    className="cardImage"
-                    variant="bottom"
-                    src={this.state.locationMap}
-                    style={{ width: '40rem' }}
-                  />
-                </Card.Body>
-              </Card>
+          <Card.Body className='card-body'>
+            <Card.Title> Welcome to {this.state.city} !</Card.Title>
+            <Card.Text className='card-text'>
+              Latitude: {this.state.locationLat}<br></br>Longitude: {this.state.locationLon}
+            </Card.Text>
+            <Card.Img
+              className="cardImage"
+              variant="bottom"
+              src={this.state.locationMap}
+              style={{ width: '35rem' }}/>
+          </Card.Body>
+        </Card>
       </>
-      
+
     );
   }
 }
