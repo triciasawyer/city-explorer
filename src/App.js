@@ -12,6 +12,7 @@ class App extends React.Component {
       errorMessage: '',
       locationLat: '',
       locationLon: '',
+      locationMap: ''
     };
   }
 
@@ -27,6 +28,8 @@ class App extends React.Component {
       let cityInfo = await axios.get(url);
       console.log('cityInfo:', cityInfo.data[0]);
 
+      let locationMap = `https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_KEY_LOCATION}&center=${cityInfo.data[0].lat},${cityInfo.data[0].lon}&zoom=12`
+
 
       let locationLat = cityInfo.data[0].lat;
       let locationLon = cityInfo.data[0].lon;
@@ -35,13 +38,15 @@ class App extends React.Component {
         cityName: cityInfo.data[0],
         error: false,
         locationLat: locationLat,
-        locationLon: locationLon
+        locationLon: locationLon,
+        locationMap: locationMap,
       });
     }
     catch (error) {
       console.log('error', error);
       this.setState({
         error: true,
+        locationMap: false,
         errorMessage: `an error occured: ${error.response.status}`,
       });
     }
@@ -77,7 +82,7 @@ class App extends React.Component {
           </label>
           <Button type='submit'>Explore!</Button>
         </Form>
-        <Card className="erroneus" id='location'>
+        <Card className="location-cards" id='location'>
                 <Card.Body>
                   <Card.Title> Welcome to {this.state.city}!</Card.Title>
                   <Card.Text>
@@ -86,8 +91,8 @@ class App extends React.Component {
                   <Card.Img
                     className="cardImage"
                     variant="bottom"
-                    src={this.state.mapPic}
-                    style={{ width: '35rem' }}
+                    src={this.state.locationMap}
+                    style={{ width: '40rem' }}
                   />
                 </Card.Body>
               </Card>
