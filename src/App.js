@@ -1,12 +1,13 @@
 import React from 'react';
 import axios from 'axios';
+import { Button, Card, Form} from 'react-bootstrap';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       city: '',
-      cityData: {},
+      cityData: [],
       error: false,
       errorMessage: '',
       locationLat: '',
@@ -14,7 +15,7 @@ class App extends React.Component {
     };
   }
 
-  handleSubmit = async (event) => {
+  handleCitySubmit = async (event) => {
     event.preventDefault();
     console.log(this.state.city);
 
@@ -61,21 +62,37 @@ class App extends React.Component {
 
     return (
       <>
-        <h1>Data locations API</h1>
-
+        <header>
+          <h1>Data locations API</h1>
+        </header>
         {this.state.error ? (
           <p>{this.state.errorMessage}</p>
         ) : (
-          <ul>{ }</ul>
+          <ul>{this.state.cityData}</ul>
         )}
-        <form onSubmit={this.handleSubmit}>
+        <Form onSubmit={this.handleCitySubmit}>
           <label>
             Pick a City:
             <input type='text' onChange={this.handleCityInput} />
           </label>
-          <button type='submit'>Explore!</button>
-        </form>
+          <Button type='submit'>Explore!</Button>
+        </Form>
+        <Card className="erroneus" id='location'>
+                <Card.Body>
+                  <Card.Title> Welcome to {this.state.city}!</Card.Title>
+                  <Card.Text>
+                    Latitude: {this.state.locationLat}<br></br>Longitude: {this.state.locationLon}
+                  </Card.Text>
+                  <Card.Img
+                    className="cardImage"
+                    variant="bottom"
+                    src={this.state.mapPic}
+                    style={{ width: '35rem' }}
+                  />
+                </Card.Body>
+              </Card>
       </>
+      
     );
   }
 }
