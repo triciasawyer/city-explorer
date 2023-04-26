@@ -51,6 +51,7 @@ class App extends React.Component {
         errorMessage: `Uh oh, an error occured! ${error.response.status}`,
       });
     }
+    // this.getWeather();
   };
 
 
