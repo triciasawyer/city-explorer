@@ -49,6 +49,7 @@ class Main extends React.Component {
                 locationLon: locationLon,
                 displayMap: true,
             });
+            this.displayWeather(cityInfo.data[0].lat,cityInfo.data[0].lon);
         } catch (error) {
             this.setState({
                 displayError: true,
@@ -56,6 +57,19 @@ class Main extends React.Component {
                 errorMessage: error.response.status + ': ' + error.response.data.error,
             });
         }
+    };
+
+    displayWeather = async (lat, lon) => {
+        //url to server
+        // let url = await axios.get('${process.env.REACT_APP_SERVER}/weather?', 
+        // {
+        //     params: {latitude: lat,
+        //     longitude: lon,
+        //     searchQuery: this.state.city}
+        // });
+
+
+
     };
 
 
