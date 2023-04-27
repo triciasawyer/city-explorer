@@ -5,8 +5,8 @@ import Container from "react-bootstrap/Container";
 import Coordinates from './Coordinates';
 import CitySearch from './CitySearch';
 import Map from './Map';
+import Weather from './Weather.js';
 import axios from 'axios';
-console.log(process.env.REACT_APP_LOCATION_KEY);
 
 
 
@@ -23,6 +23,8 @@ class Main extends React.Component {
             locationMap: '',
             displayMap: false,
             weatherData: [],
+            // date: [],
+            // forecast: [],
         };
     }
 
@@ -34,7 +36,7 @@ class Main extends React.Component {
     };
 
     displayCoordinates = async () => {
-        console.log("proof we made it ");
+        // console.log("proof we made it ");
         let url = (`https://us1.locationiq.com/v1/search?key=${process.env.REACT_APP_KEY_LOCATION}&q=${this.state.city}&format=json`);
 
         try {
@@ -50,7 +52,7 @@ class Main extends React.Component {
                 locationLon: locationLon,
                 displayMap: true,
             });
-            this.displayWeather(cityInfo.data[0].lat,cityInfo.data[0].lon);
+            this.displayWeather(cityInfo.data[0].lat, cityInfo.data[0].lon);
         } catch (error) {
             this.setState({
                 displayError: true,
@@ -62,24 +64,27 @@ class Main extends React.Component {
 
     displayWeather = async (lat, lon) => {
         //url to server
-        let weatherResponse = await axios.get('${process.env.REACT_APP_SERVER}/weather?', 
-        {
-            params: {latitude: lat,
-            longitude: lon,
-            searchQuery: this.state.city}
+        let weatherResponse = await axios.get(`${process.env.REACT_APP_SERVER}/weather?`,
+            {
+                params: {
+                    latitude: lat,
+                    longitude: lon,
+                    searchQuery: this.state.city
+                }
+            });
+        this.setState({
+            weatherData: weatherResponse.data,
         });
 
-this.setState({
-        weatherData: weatherResponse.data,
-    });
-
-//add render below for the weather.
+        //add render below for the weather.
     };
 
 
 
 
     render() {
+        // console.log('HHHHHHWORKS',this.state.weatherData);
+
         return (
             <>
                 <Container fluid>
@@ -110,6 +115,14 @@ this.setState({
                                     <Map
                                         img_url={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_KEY_LOCATION}&center=${this.state.locationLat},${this.state.locationLon}&zoom=12`}
                                         city={this.state.city} />
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col>
+                                    <Weather
+                                        weatherData={this.state.weatherData}
+                                        // forecast={this.state.forecast}
+                                    />
                                 </Col>
                             </Row>
                         </>
