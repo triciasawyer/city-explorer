@@ -21,7 +21,8 @@ class Main extends React.Component {
             locationLat: '',
             locationLon: '',
             locationMap: '',
-            displayMap: false
+            displayMap: false,
+            weatherData: [],
         };
     }
 
@@ -61,16 +62,20 @@ class Main extends React.Component {
 
     displayWeather = async (lat, lon) => {
         //url to server
-        // let url = await axios.get('${process.env.REACT_APP_SERVER}/weather?', 
-        // {
-        //     params: {latitude: lat,
-        //     longitude: lon,
-        //     searchQuery: this.state.city}
-        // });
+        let weatherResponse = await axios.get('${process.env.REACT_APP_SERVER}/weather?', 
+        {
+            params: {latitude: lat,
+            longitude: lon,
+            searchQuery: this.state.city}
+        });
 
+this.setState({
+        weatherData: weatherResponse.data,
+    });
 
-
+//add render below for the weather.
     };
+
 
 
 
