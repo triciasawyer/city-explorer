@@ -53,7 +53,7 @@ class Main extends React.Component {
             this.setState({
                 displayError: true,
                 displayMap: false,
-                errorMessage: `Uh oh, an error occured! ${error.response.status}`,
+                errorMessage: error.response.status + ': ' + error.response.data.error,
             });
         }
     };
