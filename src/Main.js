@@ -38,7 +38,7 @@ class Main extends React.Component {
 
     displayCoordinates = async () => {
         // console.log("proof we made it ");
-        let url = (`https://us1.locationiq.com/v1/search?key=${process.env.REACT_APP_KEY_LOCATION}&q=${this.state.city}&format=json`);
+        let url = (`http://us1.locationiq.com/v1/search?key=${process.env.REACT_APP_KEY_LOCATION}&q=${this.state.city}&format=json`);
 
         try {
             let cityInfo = await axios.get(url);
@@ -114,7 +114,7 @@ class Main extends React.Component {
                             <Row>
                                 <Col>
                                     <Map
-                                        img_url={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_KEY_LOCATION}&center=${this.state.locationLat},${this.state.locationLon}&zoom=12`}
+                                        img_url={`http://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_KEY_LOCATION}&center=${this.state.locationLat},${this.state.locationLon}&zoom=12`}
                                         city={this.state.city} />
                                 </Col>
                             </Row>
