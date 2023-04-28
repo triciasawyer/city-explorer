@@ -6,6 +6,7 @@ import Coordinates from './Coordinates';
 import CitySearch from './CitySearch';
 import Map from './Map';
 import Weather from './Weather.js';
+import Movie from './Movie.js';
 import axios from 'axios';
 
 
