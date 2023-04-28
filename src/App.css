@@ -52,6 +52,15 @@ header h1 {
   color: rgb(50, 42, 27);
 }
 
+.map-and-weather {
+  display: flex;
+  flex-direction: row;
+}
+
+.render-weather {
+  background-color: red;
+}
+
 Footer {
 margin-top: 50px;
 text-align: center;
@@ -59,3 +68,4 @@ color: whitesmoke;
 background-color: rgb(37, 33, 27);
 height: 30px;
 }
+

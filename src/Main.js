@@ -8,6 +8,7 @@ import Map from './Map';
 import Weather from './Weather.js';
 // import Movie from './Movie.js';
 import axios from 'axios';
+import './App.js';
 
 
 
@@ -26,6 +27,7 @@ class Main extends React.Component {
             weatherData: [],
             // date: [],
             // forecast: [],
+            // movieData: [],
         };
     }
 
@@ -118,7 +120,7 @@ class Main extends React.Component {
                                         city={this.state.city} />
                                 </Col>
                             </Row>
-                            <Row>
+                            <Row className='render-weather'>
                                 <Col>
                                     <Weather
                                         weatherData={this.state.weatherData}
