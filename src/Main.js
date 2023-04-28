@@ -6,7 +6,8 @@ import Coordinates from './Coordinates';
 import CitySearch from './CitySearch';
 import Map from './Map';
 import Weather from './Weather.js';
-import Movies from './Movie.js';
+// import Movies from './Movie.js';
+import Yelp from './Yelp.js';
 import axios from 'axios';
 import './App.js';
 
@@ -129,7 +130,7 @@ class Main extends React.Component {
                             </div>
                             <Row>
                                 <Col>
-                                <Movies movies={this.state.movies} />
+                                {/* <Movies movies={this.state.movies} /> */}
                                 </Col>
                             </Row>
                         </>
