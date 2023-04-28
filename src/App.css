@@ -1,38 +1,57 @@
 .App {
   text-align: center;
+  background-image: url('background-img.png');
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  /* background-color: #b08941; */
+  background-image: url('background-img.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  background-position: left;
+  height: 30%;
+  color: whitesmoke
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+header h1 {
+  text-align: center;
+  color: rgb(50, 42, 27);
+  border: 3px solid rgb(50, 42, 27);
+  width: 350px;
+  height: 60px;
+  padding-top: 15px;
+  margin-left: 540px;
+  margin-bottom: 120px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.form {
+  text-align: center;
+  height: 50px;
+}
+
+.form-label {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  width: 200px;
+  margin-left: 620px;
 }
 
-.App-link {
-  color: #61dafb;
+.form button {
+  margin-top: 8px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.location-cards {
+  margin: 75px;
+  text-align: center;
+  color: whitesmoke
+}
+
+.card-text {
+  margin: 30px;
+}
+
+Footer {
+margin-top: 200px;
+text-align: center;
 }
