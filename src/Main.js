@@ -122,7 +122,7 @@ class Main extends React.Component {
                                 <Col>
                                     <Weather
                                         weatherData={this.state.weatherData}
-                                        // forecast={this.state.forecast}
+                                        forecast={this.state.forecast}
                                     />
                                 </Col>
                             </Row>
