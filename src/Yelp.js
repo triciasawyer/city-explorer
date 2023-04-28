@@ -8,8 +8,8 @@ class Yelp extends React.Component {
         return (
             <>
                 <div id='food'>
-                    {this.props.yelp.map((day, index) => (
-                        <YelpContent key={index} day={day} />
+                    {this.props.yelp.map((date, index) => (
+                        <YelpContent key={index} day={date} />
                     ))
                     }
                 </div>
