@@ -113,21 +113,23 @@ class Main extends React.Component {
                                     />
                                 </Col>
                             </Row>
-                            <Row>
-                                <Col>
-                                    <Map
-                                        img_url={`http://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_KEY_LOCATION}&center=${this.state.locationLat},${this.state.locationLon}&zoom=12`}
-                                        city={this.state.city} />
-                                </Col>
-                            </Row>
-                            <Row className='render-weather'>
-                                <Col>
-                                    <Weather
-                                        weatherData={this.state.weatherData}
-                                        forecast={this.state.forecast}
-                                    />
-                                </Col>
-                            </Row>
+                            <div id='map-and-weather'>
+                                <Row className='render-map'>
+                                    <Col>
+                                        <Map
+                                            img_url={`http://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_KEY_LOCATION}&center=${this.state.locationLat},${this.state.locationLon}&zoom=12`}
+                                            city={this.state.city} />
+                                    </Col>
+                                </Row>
+                                <Row className='render-weather'>
+                                    <Col>
+                                        <Weather
+                                            weatherData={this.state.weatherData}
+                                            forecast={this.state.forecast}
+                                        />
+                                    </Col>
+                                </Row>
+                            </div>
                         </>
                     )}
                 </Container>

@@ -52,14 +52,30 @@ header h1 {
   color: rgb(50, 42, 27);
 }
 
-.map-and-weather {
+#map-and-weather {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+}
+
+.render-map {
+  margin-left: 200px;
 }
 
 .render-weather {
-  background-color: red;
+  border: 3px solid rgb(50, 42, 27);
+  margin-right: 70px;
+  width: 600px;
 }
+
+#weather h2 {
+  text-align: center;
+}
+
+.card-body {
+  padding-bottom: 10px;
+}
+
 
 Footer {
 margin-top: 50px;
