@@ -6,8 +6,8 @@ import Coordinates from './Coordinates';
 import CitySearch from './CitySearch';
 import Map from './Map';
 import Weather from './Weather.js';
-// import Movies from './Movie.js';
-import Yelp from './Yelp.js';
+import Movie from './Movie.js';
+// import Yelp from './Yelp.js';
 import axios from 'axios';
 import './App.js';
 
@@ -26,9 +26,7 @@ class Main extends React.Component {
             locationMap: '',
             displayMap: false,
             weatherData: [],
-            // date: [],
-            // forecast: [],
-            // movieData: [],
+            movie: [],
         };
     }
 
@@ -57,6 +55,7 @@ class Main extends React.Component {
                 displayMap: true,
             });
             this.displayWeather(cityInfo.data[0].lat, cityInfo.data[0].lon);
+            // this.displayMovie(cityInfo.data[0].lat, cityInfo.data[0].lon);
         } catch (error) {
             this.setState({
                 displayError: true,
@@ -65,6 +64,8 @@ class Main extends React.Component {
             });
         }
     };
+
+
 
     displayWeather = async (lat, lon) => {
         //url to server
@@ -79,15 +80,42 @@ class Main extends React.Component {
         this.setState({
             weatherData: weatherResponse.data,
         });
-
-        //add render below for the weather.
     };
 
 
 
 
+    displayMovie = async (lat, lon,) => {
+
+        try {
+            const movie = await axios.get(`${process.env.REACT_APP_SERVER}/movie`,
+                {
+                    params: {
+                        latitude: lat,
+                        longitude: lon,
+                        searchQuery: this.state.city,
+                    },
+                }
+            );
+            this.setState({
+                movie: movie.data,
+            });
+
+        } catch (error) {
+            this.setState({
+                displayError: true,
+                displayMap: false,
+                errorMessage: error.response.status + ': ' + error.response.data.error,
+            });
+        }
+    };
+
+
+
+
+
+
     render() {
-        // console.log('HHHHHHWORKS',this.state.weatherData);
 
         return (
             <>
@@ -124,13 +152,13 @@ class Main extends React.Component {
                                 </Row>
                                 <Row className='render-weather'>
                                     <Col>
-                                        <Weather weatherData={this.state.weatherData}/>
+                                        <Weather weatherData={this.state.weatherData} />
                                     </Col>
                                 </Row>
                             </div>
                             <Row>
                                 <Col>
-                                {/* <Movies movies={this.state.movies} /> */}
+                                    <Movie movie={this.state.movie} />
                                 </Col>
                             </Row>
                         </>

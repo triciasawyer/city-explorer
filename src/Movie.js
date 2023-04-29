@@ -1,14 +1,22 @@
-// import React from 'react';
-// import './App.css'
+import React from 'react';
+import MovieContent from './MovieContent.js'
+import './App.css'
 
 
-// class Movies extends React.Component {
-//     render() {
-//       let movies = this.props.movies.map((movie, index) => {
-//         return <img src={movie.imageUrl} alt={movie.title}  key={index} />;
-//       });
-//       return <div>{movies}</div>;
-//     }
-//   }
-  
-//   export default Movies;
+class Movie extends React.Component {
+
+    render() {
+        return (
+            <>
+                <h3>Movies: </h3>
+                {
+                    this.props.movie.map((date, index) => {
+                        return <MovieContent key={index} date={date}/>;
+                    })
+                }
+            </>
+        )
+    }
+}
+
+export default Movie;
