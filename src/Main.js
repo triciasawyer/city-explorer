@@ -85,14 +85,12 @@ class Main extends React.Component {
 
 
 
-    displayMovie = async (lat, lon,) => {
+    displayMovie = async (searchQuery) => {
 
         try {
-            const movieResponse = await axios.get(`${process.env.REACT_APP_SERVER}/movie`,
+            const movieResponse = await axios.get(`${process.env.REACT_APP_SERVER}/movie?`,
                 {
                     params: {
-                        latitude: lat,
-                        longitude: lon,
                         searchQuery: this.state.city,
                     },
                 }
