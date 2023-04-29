@@ -6,11 +6,12 @@ import './App.css'
 class Movie extends React.Component {
 
     render() {
+        console.log('MOVIE JS',this.props.movieData);
         return (
             <>
                 <h3>Movies: </h3>
                 {
-                    this.props.movie.map((date, index) => {
+                    this.props.movieData.map((date, index) => {
                         return <MovieContent key={index} date={date}/>;
                     })
                 }

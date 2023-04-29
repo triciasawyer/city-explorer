@@ -26,7 +26,7 @@ class Main extends React.Component {
             locationMap: '',
             displayMap: false,
             weatherData: [],
-            movie: [],
+            movieData: [],
         };
     }
 
@@ -88,7 +88,7 @@ class Main extends React.Component {
     displayMovie = async (lat, lon,) => {
 
         try {
-            const movie = await axios.get(`${process.env.REACT_APP_SERVER}/movie`,
+            const movieResponse = await axios.get(`${process.env.REACT_APP_SERVER}/movie`,
                 {
                     params: {
                         latitude: lat,
@@ -98,7 +98,7 @@ class Main extends React.Component {
                 }
             );
             this.setState({
-                movie: movie.data,
+                movieData: movieResponse.data,
             });
 
         } catch (error) {
@@ -158,7 +158,7 @@ class Main extends React.Component {
                             </div>
                             <Row>
                                 <Col>
-                                    <Movie movie={this.state.movie} />
+                                    <Movie movieData={this.state.movieData} />
                                 </Col>
                             </Row>
                         </>

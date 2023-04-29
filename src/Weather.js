@@ -5,7 +5,7 @@ import WeatherContent from './WeatherContent.js'
 class Weather extends React.Component {
 
     render() {
-        console.log(this.props.weatherData);
+        // console.log(this.props.weatherData);
         //looping here
         return (
             <>
