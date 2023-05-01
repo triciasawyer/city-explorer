@@ -1,11 +1,9 @@
 .App {
   text-align: center;
-  background-image: url('background-img.png');
 }
 
 body {
-  /* background-color: #b08941; */
-  background-image: url('background-img.png');
+  background-color: whitesmoke;
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
@@ -28,6 +26,7 @@ header h1 {
 .form {
   text-align: center;
   height: 50px;
+  color: rgb(50, 42, 27);
 }
 
 .form-label {
@@ -44,14 +43,44 @@ header h1 {
 .location-cards {
   margin: 75px;
   text-align: center;
-  color: whitesmoke
+  color: rgb(50, 42, 27);
 }
 
 .card-text {
   margin: 30px;
+  color: rgb(50, 42, 27);
 }
 
-Footer {
-margin-top: 200px;
-text-align: center;
+#map-and-weather {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
+
+.render-map {
+  margin-left: 200px;
+}
+
+.render-weather {
+  border: 3px solid rgb(50, 42, 27);
+  margin-right: 70px;
+  width: 600px;
+}
+
+#weather h2 {
+  text-align: center;
+}
+
+.card-body {
+  padding-bottom: 10px;
+}
+
+
+Footer {
+margin-top: 50px;
+text-align: center;
+color: whitesmoke;
+background-color: rgb(37, 33, 27);
+height: 30px;
+}
+
