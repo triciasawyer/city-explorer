@@ -48,14 +48,22 @@ class Main extends React.Component {
 
 
             this.setState({
-                cityName: cityInfo.data[0],
+                city: cityInfo.data[0].display_name,
                 error: false,
                 locationLat: locationLat,
                 locationLon: locationLon,
                 displayMap: true,
             });
             this.displayWeather(cityInfo.data[0].lat, cityInfo.data[0].lon);
-            // this.displayMovie(cityInfo.data[0].lat, cityInfo.data[0].lon);
+            let newCityNameForMovie  = cityInfo.data[0].display_name.split(" ")[0];
+            console.log("🚀 ~ file: Main.js:59 ~ Main ~ displayCoordinates= ~ newCityNameForMoive:", newCityNameForMovie);
+            let cityNameOnly = newCityNameForMovie.slice(0, -1);
+            console.log("🚀 ~ file: Main.js:61 ~ Main ~ displayCoordinates= ~ cityNameOnly:", cityNameOnly)
+
+            // Seattle, King County, Washington, USA 
+            this.displayMovie(cityNameOnly);
+
+
         } catch (error) {
             this.setState({
                 displayError: true,
@@ -86,9 +94,9 @@ class Main extends React.Component {
 
 
     displayMovie = async (searchQuery) => {
-
+            console.log('to we have a city',searchQuery);
         try {
-            const movieResponse = await axios.get(`${process.env.REACT_APP_SERVER}/movie?`,
+            const movieResponse = await axios.get(`${process.env.REACT_APP_SERVER}/movies?`,
                 {
                     params: {
                         searchQuery: this.state.city,
@@ -114,7 +122,7 @@ class Main extends React.Component {
 
 
     render() {
-
+        // console.log('movie from state', this.state.movieData);
         return (
             <>
                 <Container fluid>

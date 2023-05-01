@@ -6,7 +6,7 @@ import './App.css'
 class Movie extends React.Component {
 
     render() {
-        console.log('MOVIE JSSS', this.props.movieData);
+        // console.log('MOVIE JSSS', this.props.movieData);
         return (
             <>
                 <h3>Movies: </h3>
