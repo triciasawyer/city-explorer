@@ -15,10 +15,10 @@ class CitySearch extends Component {
         return (
             <Form className='form' onSubmit={this.handleCitySubmit}>
                 <label className='form-label'>
-                    Search for location:
-                    <input type='text' onChange={this.props.handleCityInput} />
+                    Search a location:
+                    <input className="srch-input" type='text' onChange={this.props.handleCityInput} />
                 </label>
-                <Button type='submit'>Explore!</Button>
+                <Button className="explore-btn" type='submit'>Explore!</Button>
             </Form>
         );
     }

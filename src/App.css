@@ -9,17 +9,15 @@ body {
   position: relative;
   background-position: left;
   height: 30%;
-  color: whitesmoke
+  color: whitesmoke;
+  /* width: 100%; */
 }
 
 header h1 {
   text-align: center;
   color: rgb(50, 42, 27);
   border: 3px solid rgb(50, 42, 27);
-  width: 350px;
-  height: 60px;
   padding-top: 15px;
-  margin-left: 540px;
   margin-bottom: 120px;
 }
 
@@ -34,10 +32,11 @@ header h1 {
   flex-direction: column;
   width: 200px;
   margin-left: 620px;
+  font-size: 20px;
 }
 
-.form button {
-  margin-top: 8px;
+.srch-input {
+  height: 20px;
 }
 
 .location-cards {
@@ -75,12 +74,19 @@ header h1 {
   padding-bottom: 10px;
 }
 
-
-Footer {
-margin-top: 50px;
-text-align: center;
-color: whitesmoke;
-background-color: rgb(37, 33, 27);
-height: 30px;
+.explore-btn {
+  background-color: #4681f4;
+  border-radius: 5px;
+  padding: 5px;
+  box-shadow: 5px y-offset;
+  margin-top: 8px;
+  font-size: 15px;
 }
 
+Footer {
+  margin-top: 50px;
+  text-align: center;
+  color: whitesmoke;
+  background-color: rgb(37, 33, 27);
+  height: 30px;
+}
